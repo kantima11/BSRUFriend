@@ -171,6 +171,18 @@ public class SignUpActivity extends AppCompatActivity {
             simpleFTP.cwd("Image_Ying");
             simpleFTP.stor(new File(pathImageString));
             simpleFTP.disconnect();
+
+            //upload Text
+            String tag = "10fabV2";
+            Log.d(tag, "Name ==> " + nameString);
+            Log.d(tag, "User ==> " + userString);
+            Log.d(tag, "Password ==> " + passString);
+
+            nameImageString = "http://swiftcodingthai.com/bsru/Image_Ying" + pathImageString.substring(pathImageString.lastIndexOf("/"));
+            Log.d(tag, "Image ==> " + nameImageString);
+            Log.d(tag, "Avata ==> " + anInt);
+
+
         } catch (Exception e) {
             Log.d("10fabV1", "e upload ==>" + e.toString());
         }
