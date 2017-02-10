@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.net.Uri;
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,10 @@ import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import org.jibble.simpleftp.SimpleFTP;
+
+import java.io.File;
+
 public class SignUpActivity extends AppCompatActivity {
     //Explicit
     private EditText nameEditText, userEditText, passEditText;
@@ -27,6 +32,7 @@ public class SignUpActivity extends AppCompatActivity {
     private String nameString, userString, passString, pathImageString, nameImageString;
     private Uri uri;
     private boolean aBoolean = true;
+    private int anInt = 0;
 
 
     @Override
@@ -42,7 +48,38 @@ public class SignUpActivity extends AppCompatActivity {
         //Image Controller
         ImageController();
 
+        //Radio Controller
+        RadioController();
+
+
     }   //main Method
+
+    private void RadioController() {
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId) {
+                    case R.id.radioButton:
+                        anInt = 0;
+                        break;
+                    case R.id.radioButton2:
+                        anInt = 0;
+                        break;
+                    case R.id.radioButton3:
+                        anInt = 0;
+                        break;
+                    case R.id.radioButton4:
+                        anInt = 0;
+                        break;
+                    case R.id.radioButton5:
+                        anInt = 0;
+                        break;
+
+                }
+
+            }
+        });
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -113,10 +150,30 @@ public class SignUpActivity extends AppCompatActivity {
 
 
                 } else {
-
+                 //
+                    uploadValueToSever();
                 }
             }   // onClick
         });
+    }
+
+    private void uploadValueToSever() {
+        try {
+            //Upload Image
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy
+                    .Builder()
+                    .permitAll()
+                    .build();
+            StrictMode.setThreadPolicy(policy);
+            SimpleFTP simpleFTP = new SimpleFTP();
+            simpleFTP.connect("ftp.Swiftcodingthai.com", 21, "bsru@swiftcodingthai.com", "Abc12345");
+            simpleFTP.bin();
+            simpleFTP.cwd("Image_Ying");
+            simpleFTP.stor(new File(pathImageString));
+            simpleFTP.disconnect();
+        } catch (Exception e) {
+            Log.d("10fabV1", "e upload ==>" + e.toString());
+        }
     }
 
     private void bindWidget() {
