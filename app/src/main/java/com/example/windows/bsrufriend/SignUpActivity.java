@@ -182,6 +182,22 @@ public class SignUpActivity extends AppCompatActivity {
             Log.d(tag, "Image ==> " + nameImageString);
             Log.d(tag, "Avata ==> " + anInt);
 
+            AddvalueToUser addvalueToUser = new AddvalueToUser(SignUpActivity.this,
+                    nameString, userString, passString, nameImageString,
+                    Integer.toString(anInt));
+            addvalueToUser.execute("http://swiftcodingthai.com/bsru/add_ying.php");
+            String s = addvalueToUser.get();
+            Log.d(tag, "Result ==> " + s);
+
+            if (Boolean.parseBoolean(s)) {
+                finish();
+            } else {
+
+            }
+
+
+
+
 
         } catch (Exception e) {
             Log.d("10fabV1", "e upload ==>" + e.toString());
