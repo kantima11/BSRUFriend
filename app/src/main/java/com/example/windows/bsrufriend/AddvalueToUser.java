@@ -56,6 +56,7 @@ public class AddvalueToUser extends AsyncTask<String, Void, String>{
                     .add("User", userString)
                     .add("Password", passString)
                     .add("Image", imageString)
+                    .add("Avata", avataString)
                     .build();
             Request.Builder builder = new Request.Builder();
             Request request = builder.url(params[0]).post(requestBody).build();

@@ -63,16 +63,16 @@ public class SignUpActivity extends AppCompatActivity {
                         anInt = 0;
                         break;
                     case R.id.radioButton2:
-                        anInt = 0;
+                        anInt = 1;
                         break;
                     case R.id.radioButton3:
-                        anInt = 0;
+                        anInt = 2;
                         break;
                     case R.id.radioButton4:
-                        anInt = 0;
+                        anInt = 3;
                         break;
                     case R.id.radioButton5:
-                        anInt = 0;
+                        anInt = 4;
                         break;
 
                 }
@@ -185,7 +185,7 @@ public class SignUpActivity extends AppCompatActivity {
             AddvalueToUser addvalueToUser = new AddvalueToUser(SignUpActivity.this,
                     nameString, userString, passString, nameImageString,
                     Integer.toString(anInt));
-            addvalueToUser.execute("http://swiftcodingthai.com/bsru/add_ying.php");
+            addvalueToUser.execute("http://swiftcodingthai.com/bsru/add_master.php");
             String s = addvalueToUser.get();
             Log.d(tag, "Result ==> " + s);
 
