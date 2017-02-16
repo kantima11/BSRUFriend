@@ -23,9 +23,6 @@ public class MainActivity extends AppCompatActivity {
     private boolean aBoolean = true;
 
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
             Log.d("16fabV1", "strJSON ==> " + strJSON);
 
             JSONArray jsonArray = new JSONArray(strJSON);
-            for (int i=0;i<jsonArray.length();i++) {
+            for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 if (userString.equals(jsonObject.getString("User"))) {
 
@@ -100,10 +97,18 @@ public class MainActivity extends AppCompatActivity {
                 //Password False
                 MyAlert myAlert = new MyAlert(MainActivity.this);
                 myAlert.myDialog("Password False", "Please Try Again Password False");
+
             } else {
-              //Password True
+                //Password True
                 Toast.makeText(MainActivity.this, "Welcome" + loginString[1],
                         Toast.LENGTH_SHORT).show();
+
+                //Intent to Service
+                Intent intent = new Intent(MainActivity.this, ServiceActivity.class);
+                intent.putExtra("Login", loginString);
+                startActivity(intent);
+                finish();
+
             }
 
         } catch (Exception e) {
