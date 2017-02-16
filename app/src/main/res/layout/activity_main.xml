@@ -10,7 +10,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".MainActivity"
-    android:background="@drawable/wallpapers_a_03">
+    android:background="@drawable/bg27">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -96,6 +96,7 @@
                 android:layout_gravity="center_vertical"
 
                 android:textColorHint="@android:color/holo_blue_dark" />
+
         </LinearLayout>
     </LinearLayout>
 
